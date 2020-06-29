@@ -1,25 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:front/dummy_data.dart';
+import 'package:provider/provider.dart';
+
+import './screens/splash_screen.dart';
+import './dummy_data.dart';
+import './providers/auth.dart';
 import './screens/report_covid_screen.dart';
 import './widgets/main_drawer.dart';
+import './screens/auth_screen.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Ace Shield',
-      theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(
+          value: Auth(),
+        ),
+      ],
+      child: Consumer<Auth>(
+        builder: (ctx, auth, _) => MaterialApp(
+          title: 'Ace Shield',
+          theme: ThemeData(
+            primarySwatch: Colors.blueGrey,
+          ),
+          // home: MyHomePage(),
+          // initialRoute: '/',
+          home: auth.isAuth
+              ? MyHomePage()
+              : FutureBuilder(
+                  future: auth.tryAutoLogin(),
+                  builder: (ctx, authResultSnapshot) => authResultSnapshot.connectionState == ConnectionState.waiting ? SplashScreen() : AuthScreen(),
+                ),
+          routes: {
+            // '/': (ctx) => HomeScreen(),
+            // CalendarScreen.routeName: (ctx) => CalendarScreen(),
+            ReportCovidScreen.routeName: (ctx) => ReportCovidScreen(),
+          },
+        ),
       ),
-      home: MyHomePage(),
-      initialRoute: '/',
-      routes: {
-        // '/': (ctx) => HomeScreen(),
-        // CalendarScreen.routeName: (ctx) => CalendarScreen(),
-        ReportCovidScreen.routeName: (ctx) => ReportCovidScreen(),
-      },
     );
   }
 }
@@ -34,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ace Shield'),
+        title: Text('Minhas Turmas'),
         actions: <Widget>[
           IconButton(
             icon: Icon(
@@ -59,7 +79,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding: EdgeInsets.symmetric(
                     vertical: 15,
                   ),
-                  color: cls.infectedPeople > 0 ? Colors.red[300] : Colors.green[400],
+                  color: cls.infectedPeople > 0
+                      ? Colors.red[300]
+                      : Colors.green[400],
                   child: Column(
                     children: <Widget>[
                       Container(

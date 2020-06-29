@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import '../screens/report_covid_screen.dart';
+import '../providers/auth.dart';
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTile(String title, IconData icon, Function tapHandler) {
@@ -42,17 +45,35 @@ class MainDrawer extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          buildListTile('Início', Icons.home, () {
-            Navigator.of(context).pushNamed('/');
-          }),
-          buildListTile('Estou com COVID', Icons.brightness_7, () {
-            // Navigator.of(context).pushNamed(ReportCovidScreen.routeName);
-            Navigator.of(context).pushReplacementNamed(ReportCovidScreen.routeName);
-          }),
+          buildListTile(
+            'Início',
+            Icons.home,
+            () {
+              Navigator.of(context).pushNamed('/');
+            },
+          ),
+          buildListTile(
+            'Estou com COVID',
+            Icons.brightness_7,
+            () {
+              // Navigator.of(context).pushNamed(ReportCovidScreen.routeName);
+              Navigator.of(context)
+                  .pushReplacementNamed(ReportCovidScreen.routeName);
+            },
+          ),
           buildListTile(
               'Salas frequentadas por infectados', Icons.report_problem, () {}),
           buildListTile('Grade horária', Icons.calendar_today, () {}),
           buildListTile('Horário de saída da semana', Icons.access_time, () {}),
+          buildListTile(
+            'Sair',
+            Icons.power_settings_new,
+            () {
+              Navigator.of(context).pop();
+              // Navigator.of(context).pushReplacementNamed('/');
+              Provider.of<Auth>(context, listen: false).logout();
+            },
+          ),
         ],
       ),
     );
