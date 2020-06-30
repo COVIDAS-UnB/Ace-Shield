@@ -1,3 +1,5 @@
+![Logo](https://github.com/COVIDAS-UnB/Ace-Shield/blob/master/assets/images/logo-ace-shield-color.png)
+
 # Informações da Equipe
 
 Integrantes:
