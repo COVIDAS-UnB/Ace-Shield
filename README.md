@@ -1,16 +1,38 @@
-# front
+# Informações da Equipe
 
-A new Flutter project.
+Integrantes:
 
-## Getting Started
+ - Flávia
+ - Gabriel Nóbrega Bufolo
+ - Igor Figueira Pinheiro da Silva
+ - Julia Porfirio
+ - Larissa Boaz (líder)
+ - Thales Godoy
+ - Victor
 
-This project is a starting point for a Flutter application.
+Problema a ser resolvido:
+2 - Necessidade de distanciamento físico constante entre as pessoas - formação de comportamento e aspectos de planejamento físico/ambientais.
 
-A few resources to get you started if this is your first Flutter project:
+# Ace Shield
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Ace Shield é o nome do aplicativo desenvolvido pela equipe. Sua principal funcionalidade é gerar uma grade horária que minimiza o tempo (horas e dias) que um aluno deve gastar na UnB fora dos horários de aula. Também foram prototipadas telas de alerta onde um aluno pode checar se em alguma das suas turmas há uma pessoa que contraiu coronavírus nos últimos dias.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Como instalar
+
+ - Instale o [Android Studio](https://developer.android.com/studio/)
+ - Instale o [Flutter SDK](https://flutter.dev/docs/get-started/install)
+ - Clone o repositório
+ 
+ Na pasta raíz rode:
+
+> flutter doctor
+
+para verificar se todas as dependências estão instaladas e se existe um AVD ou dispositivo físico conectado
+
+> flutter pub get
+
+para pegar todas as dependências especificadas no pubspec.yaml
+
+> flutter run
+
+para rodar o projeto.
