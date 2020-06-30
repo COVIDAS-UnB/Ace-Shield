@@ -43,5 +43,5 @@ para rodar o projeto.
  1. [Link para o pitch](https://www.youtube.com/watch?v=wvuKBZ_Fj5M)
  2. [Link para o protótipo](https://www.figma.com/proto/HQgr6sv1utWoYJsu1hIH1O/Ace-Shield-App?node-id=7:70&scaling=scale-down)
  3. [Link para o Relatório das pesquisas de aceitação](https://docs.google.com/document/d/1q5N1-uqAuIFdVR_xGHB0-M7dKSB2iXi762pzfzN0GGs/edit)
- 4. [Link para o Relatório do Projeto](https://github.com/COVIDAS-UnB/Ace-Shield/relatorios/Documento de entrega para avaliação.pdf)
+ 4. [Link para o Relatório do Projeto](https://github.com/COVIDAS-UnB/Ace-Shield/relatorios/DocumentoDeEntregaParaAvaliação.pdf)
  5. [Link para o cronograma de Execução](https://github.com/COVIDAS-UnB/Ace-Shield/relatorios/Anexo2_v2.pdf)
