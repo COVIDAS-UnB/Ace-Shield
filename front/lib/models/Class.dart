@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-class Class {
+class Class2 {
   final List<List<int>> schedule;
   final String subject;
   final String classIdentifier;
   final int numOfCreds;
   final int infectedPeople;
 
-  const Class({
+  const Class2({
     @required this.schedule,
     @required this.subject,
     @required this.classIdentifier,
@@ -70,8 +70,8 @@ Set<String> subjectNames = {
   "portuguêsinstrumental1"
 };
 
-List<Class> generateOffer() {
-  List<Class> offer = List<Class>();
+List<Class2> generateOffer() {
+  List<Class2> offer = List<Class2>();
   var rng = new Random(95);
   for (var subjectName in subjectNames) {
     int numOfHoraries = (1 + rng.nextInt(3));
@@ -93,7 +93,7 @@ List<Class> generateOffer() {
         schedule.add(timePair);
       }
       schedule.sort((a, b) => (a[0] > b[0]) ? 1 : -1);
-      Class aClass = new Class(
+      Class2 aClass = new Class2(
           schedule: schedule,subject: subjectName, classIdentifier: String.fromCharCode(64 + i), numOfCreds: numOfCreds, infectedPeople: 0);
       offer.add(aClass);
     }
@@ -101,7 +101,7 @@ List<Class> generateOffer() {
   return offer;
 }
 
-void printClass(Class theClass) {
+void printClass(Class2 theClass) {
   print(theClass.subject);
   var classIdentifier = theClass.classIdentifier;
   print("TURMA $classIdentifier");

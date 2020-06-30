@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/main_drawer.dart';
+import '../models/class.dart';
 
 class TimeOptimizerScreen extends StatefulWidget {
   static const routeName = '/time-optimizer';
@@ -9,28 +10,50 @@ class TimeOptimizerScreen extends StatefulWidget {
 }
 
 class _TimeOptimizerScreenState extends State<TimeOptimizerScreen> {
-  int _matrixIndex = 0;
+  int num = classMain();
+
+  //Lista 0 = otimizada
+  //Lista 1,2,3 = ruins
+  static List<List<Class>> _relevantSchedules = refresh(5);
+  static List<Class> _bestSchedule = _relevantSchedules[0];
+  static int _subjectsAmount = _bestSchedule.length;
+  static List<List<bool>> _timeTable =
+      generateTimeTable(_bestSchedule[0].schedule);
+  static String _classIdentifier = _bestSchedule[0].getClassIdentifier();
+  static String _classSubject = _bestSchedule[0].getSubject();
+  static Class _dummyClass = new Class(null, '', '', null);
+
+  int _matrixVerticalIndex = 0;
+  int _matrixHorizontalIndex = 0;
   List<List> _stubSubject = [
-    [
-      0,0,0,0,0,
-      1,0,1,0,1,
-      0,0,0,0,0,
-      0,0,0,0,0,
-      0,0,0,0,0,
-      0,0,0,0,0,
-      0,0,0,0,0,
-      0,0,0,0,0,
-    ],
+    [1, 0, 1, 0, 1],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
   ];
 
-  Widget subjectCard(String num) {
+  Class _getClass(int matrixVerticalIndex, int matrixHorizontalIndex) {
+    for (var i = 0; i < _subjectsAmount; i++) {
+      List<List<bool>> timeTable = generateTimeTable(_bestSchedule[i].schedule);
+      if (timeTable[matrixHorizontalIndex][matrixVerticalIndex]) {
+        return _bestSchedule[i];
+      }
+    }
+    return _dummyClass;
+  }
+
+  Widget headerCard(String headerName) {
     return Card(
       elevation: 10.0,
-      child: new Container(
+      child: Container(
         child: Align(
             alignment: Alignment.center,
             child: Text(
-              num,
+              headerName,
               style: TextStyle(
                 fontSize: 25,
               ),
@@ -39,80 +62,127 @@ class _TimeOptimizerScreenState extends State<TimeOptimizerScreen> {
     );
   }
 
+  Widget subjectCard(Class cls) {
+    return Card(
+      elevation: 10.0,
+      child: Container(
+        child: Align(
+          alignment: Alignment.center,
+          child: Column(
+            children: <Widget>[
+              Text(
+                cls.getSubject(),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
+              Text(
+                cls.getClassIdentifier() == ''
+                    ? ''
+                    : 'Turma: ' + cls.getClassIdentifier(),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Monte sua grade horária'),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(
-                Icons.notifications,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                //
-              },
+      appBar: AppBar(
+        title: Text('Monte sua grade horária'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.notifications,
+              color: Colors.white,
             ),
-          ],
-        ),
-        drawer: MainDrawer(),
-        body: GridView.count(
-          scrollDirection: Axis.horizontal,
-          childAspectRatio: 1.4 / 3,
-          crossAxisCount: 9,
-          children: List.generate(
-            54,
-            (index) {
-              if (index == 0) {
-                return Card();
-              } else if (index == 1) {
-                return subjectCard('8:00-10:00');
-              } else if (index == 2) {
-                return subjectCard('10:00-12:00');
-              } else if (index == 3) {
-                return subjectCard('12:00-14:00');
-              } else if (index == 4) {
-                return subjectCard('14:00-16:00');
-              } else if (index == 5) {
-                return subjectCard('16:00-18:00');
-              } else if (index == 6) {
-                return subjectCard('18:00-19:00');
-              } else if (index == 7) {
-                return subjectCard('19:00-21:00');
-              } else if (index == 8) {
-                return subjectCard('21:00-22:30');
-              } else if (index == 9) {
-                return subjectCard('Segunda');
-              } else if (index == 18) {
-                return subjectCard('Terça');
-              } else if (index == 27) {
-                return subjectCard('Quarta');
-              } else if (index == 36) {
-                return subjectCard('Quinta');
-              } else if (index == 45) {
-                return subjectCard('Sexta');
-              }
-              return subjectCard(index.toString());
+            onPressed: () {
+              //
             },
           ),
-        )
-        // GridView(
-        //   children: <Widget>[
-        //     Text('Seg'),
-        //     Text('Ter'),
-        //     Text('Qua'),
-        //     Text('Qui'),
-        //     Text('Sex'),
-        //     Text('Sáb'),
-        //   ],
-        //   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-        //     maxCrossAxisExtent: 60,
-        //     childAspectRatio: 3 / 2,
-        //     crossAxisSpacing: 20,
-        //     mainAxisSpacing: 20,
-        //   ),
-        // ),
-        );
+        ],
+      ),
+      drawer: MainDrawer(),
+      body: GridView.count(
+        scrollDirection: Axis.horizontal,
+        childAspectRatio: 1.2 / 3,
+        crossAxisCount: 9,
+        children: List.generate(
+          54,
+          (index) {
+            if (index == 0) {
+              return Card();
+            } else if (index == 1) {
+              return headerCard('8:00-10:00');
+            } else if (index == 2) {
+              return headerCard('10:00-12:00');
+            } else if (index == 3) {
+              return headerCard('12:00-14:00');
+            } else if (index == 4) {
+              return headerCard('14:00-16:00');
+            } else if (index == 5) {
+              return headerCard('16:00-18:00');
+            } else if (index == 6) {
+              return headerCard('18:00-19:00');
+            } else if (index == 7) {
+              return headerCard('19:00-21:00');
+            } else if (index == 8) {
+              return headerCard('21:00-22:30');
+            } else if (index == 9) {
+              return headerCard('Segunda');
+            } else if (index == 18) {
+              return headerCard('Terça');
+            } else if (index == 27) {
+              return headerCard('Quarta');
+            } else if (index == 36) {
+              return headerCard('Quinta');
+            } else if (index == 45) {
+              return headerCard('Sexta');
+            }
+            if (_matrixVerticalIndex > 7) {
+              _matrixVerticalIndex = 0;
+              _matrixHorizontalIndex++;
+            }
+            if (_matrixHorizontalIndex > 4) {
+              _matrixHorizontalIndex = 0;
+            }
+            // print(_matrixVerticalIndex);
+            // print(_matrixHorizontalIndex);
+            // print(_timeTable);
+
+            return subjectCard(
+                _getClass(_matrixVerticalIndex++, _matrixHorizontalIndex));
+          },
+        ),
+      ),
+      // GridView(
+      //   children: <Widget>[
+      //     Text('Seg'),
+      //     Text('Ter'),
+      //     Text('Qua'),
+      //     Text('Qui'),
+      //     Text('Sex'),
+      //     Text('Sáb'),
+      //   ],
+      //   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+      //     maxCrossAxisExtent: 60,
+      //     childAspectRatio: 3 / 2,
+      //     crossAxisSpacing: 20,
+      //     mainAxisSpacing: 20,
+      //   ),
+      // ),
+    );
   }
 }

@@ -418,27 +418,28 @@ List<List<bool>> generateTimeTable(Set<Horary> schedule) {
   return timeTable;
 }
 
-void main() {
-  offer = generateOffer();
+int classMain() {
+  offer = generateOffer();  
   offerBySubject = getOfferBySubject(offer);
-  offerByDay = getOfferByDay(offer);
-  offerByPeriod = getOfferByPeriod(offer);
-  offerByHorary = getOfferByHorary(offer);
+  // offerByDay = getOfferByDay(offer);
+  // offerByPeriod = getOfferByPeriod(offer);
+  // offerByHorary = getOfferByHorary(offer);
   //offerBySubject.forEach((a, b) => b.forEach((c) => printClass(c)));
-  List<String> mustHaveSubjects = new List<String>();
-  var studentSchedules = refresh(5);
-  var timeTable = generateTimeTable(studentSchedules[0][0].schedule);
-  for(int i = 0; i < 8; i++) {
-    for(int j = 0; j < 5; j++) {
-      stdout.write(" ");
-      stdout.write(timeTable[j][i]);
-    }
-    stdout.write("\n");
-  }
-  for(int i = 0; i < 4; i++) {
-    for(var aClass in studentSchedules[i]) {
-      printClass(aClass);
-    }
-    print("");
-  }
+  // List<String> mustHaveSubjects = new List<String>();
+  // var studentSchedules = refresh(5);
+  // var timeTable = generateTimeTable(studentSchedules[0][0].schedule);
+  // for(int i = 0; i < 8; i++) {
+  //   for(int j = 0; j < 5; j++) {
+  //     stdout.write(" ");
+  //     stdout.write(timeTable[j][i]);
+  //   }
+  //   stdout.write("\n");
+  // }
+  // for(int i = 0; i < 4; i++) {
+  //   for(var aClass in studentSchedules[i]) {
+  //     printClass(aClass);
+  //   }
+  //   print("");
+  // }
+  return 0;
 }
