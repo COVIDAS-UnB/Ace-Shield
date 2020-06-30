@@ -2,7 +2,8 @@
 
 Integrantes:
 
- - Flávia
+ - Flávia Cabral
+ - Eline Sandes
  - Gabriel Nóbrega Bufolo
  - Igor Figueira Pinheiro da Silva
  - Julia Porfirio
