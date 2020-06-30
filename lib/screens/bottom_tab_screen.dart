@@ -54,12 +54,12 @@ class _BottomTabScreenState extends State<BottomTabScreen> {
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).primaryColor,
             icon: Icon(Icons.calendar_today),
-            title: Text('Sua oferta'),
+            title: Text('Sua grade'),
           ),
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).primaryColor,
             icon: Icon(Icons.star),
-            title: Text('Oferta otimizada'),
+            title: Text('Grade otimizada'),
           ),
         ],
       ),
