@@ -3,17 +3,17 @@ import '../widgets/main_drawer.dart';
 import '../models/class.dart';
 import '../main.dart';
 
-class TimeOptimizerScreen extends StatefulWidget {
-  static const routeName = '/time-optimizer';
+class BadScheduleScreen extends StatefulWidget {
+  static const routeName = '/bad-schedule';
 
   @override
-  _TimeOptimizerScreenState createState() => _TimeOptimizerScreenState();
+  _BadScheduleScreenState createState() => _BadScheduleScreenState();
 }
 
-class _TimeOptimizerScreenState extends State<TimeOptimizerScreen> {
+class _BadScheduleScreenState extends State<BadScheduleScreen> {
   //Lista 0 = otimizada
   //Lista 1,2,3 = ruins
-  static List<Class> _bestSchedule = relevantSchedules[0];
+  static List<Class> _bestSchedule = relevantSchedules[3];
   static int _subjectsAmount = _bestSchedule.length;
   static List<List<bool>> _timeTable =
       generateTimeTable(_bestSchedule[0].schedule);

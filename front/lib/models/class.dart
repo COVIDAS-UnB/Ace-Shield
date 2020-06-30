@@ -418,6 +418,50 @@ List<List<bool>> generateTimeTable(Set<Horary> schedule) {
   return timeTable;
 }
 
+int getNumOfHoursAtUniversity(List<Class> studentSchedule) {
+  Set<int> daysWithClass = new Set<int>();
+  for(Class aClass in studentSchedule) {
+    for(Horary horary in aClass.schedule) {
+      daysWithClass.add(horary.weekDay);
+    }
+  }
+  int numOfIdleHours = 0;
+  for(int weekDay in daysWithClass) {
+    Set<int> periodsWithClassInDay = new Set<int>();
+    for(Class aClass in studentSchedule) {
+      for(Horary horary in aClass.schedule) {
+        if(horary.weekDay == weekDay) {
+          periodsWithClassInDay.add(horary.period);
+        }
+      }
+    }
+    int firstPeriodInDay = 6;
+    int lastPeriodInDay = 1;
+    for(int period in periodsWithClassInDay) {
+      firstPeriodInDay = period < firstPeriodInDay ? period : firstPeriodInDay;
+      lastPeriodInDay = period > lastPeriodInDay ? period : lastPeriodInDay;
+    }
+    numOfIdleHours += getNumOfIdleHours(periodsWithClassInDay);
+  }
+  int numOfBusyHours = 0;
+  for(Class aClass in studentSchedule) {
+    for(Horary horary in aClass.schedule) {
+      numOfBusyHours += 2;
+    }
+  }
+  return numOfIdleHours + numOfBusyHours;
+}
+
+int getNumDaysAtUniversity(List<Class> studentSchedule) {
+  Set<int> daysWithClass = new Set<int>();
+  for(Class aClass in studentSchedule) {
+    for(Horary horary in aClass.schedule) {
+      daysWithClass.add(horary.weekDay);
+    }
+  }
+  return daysWithClass.length;
+}
+
 int classMain() {
   offer = generateOffer();  
   offerBySubject = getOfferBySubject(offer);

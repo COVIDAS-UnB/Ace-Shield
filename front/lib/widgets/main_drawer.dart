@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front/screens/bottom_tab_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../screens/leaving_time_screen.dart';
@@ -65,8 +66,8 @@ class MainDrawer extends StatelessWidget {
           ),
           buildListTile(
               'Salas frequentadas por infectados', Icons.report_problem, () {}),
-          buildListTile('Monte sua grade horária', Icons.calendar_today, () {
-            Navigator.of(context).pushReplacementNamed(TimeOptimizerScreen.routeName);
+          buildListTile('Verifique sua oferta', Icons.calendar_today, () {
+            Navigator.of(context).pushReplacementNamed(BottomTabScreen.routeName);
           }),
           buildListTile('Horário de saída da semana', Icons.access_time, () {
             Navigator.of(context)
