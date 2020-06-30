@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:front/screens/leaving_time_screen.dart';
+import 'package:front/screens/time_optmizer.dart';
 import 'package:provider/provider.dart';
 
 import './screens/splash_screen.dart';
@@ -37,6 +39,8 @@ class MyApp extends StatelessWidget {
             // '/': (ctx) => HomeScreen(),
             // CalendarScreen.routeName: (ctx) => CalendarScreen(),
             ReportCovidScreen.routeName: (ctx) => ReportCovidScreen(),
+            LeavingTimeScreen.routeName: (ctx) => LeavingTimeScreen(),
+            TimeOptimizerScreen.routeName: (ctx) => TimeOptimizerScreen(),
           },
         ),
       ),

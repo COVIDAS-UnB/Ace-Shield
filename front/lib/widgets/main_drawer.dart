@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:front/screens/leaving_time_screen.dart';
+import 'package:front/screens/time_optmizer.dart';
 import 'package:provider/provider.dart';
 
 import '../screens/report_covid_screen.dart';
@@ -63,8 +65,13 @@ class MainDrawer extends StatelessWidget {
           ),
           buildListTile(
               'Salas frequentadas por infectados', Icons.report_problem, () {}),
-          buildListTile('Grade horária', Icons.calendar_today, () {}),
-          buildListTile('Horário de saída da semana', Icons.access_time, () {}),
+          buildListTile('Monte sua grade horária', Icons.calendar_today, () {
+            Navigator.of(context).pushReplacementNamed(TimeOptimizerScreen.routeName);
+          }),
+          buildListTile('Horário de saída da semana', Icons.access_time, () {
+            Navigator.of(context)
+                  .pushReplacementNamed(LeavingTimeScreen.routeName);
+          }),
           buildListTile(
             'Sair',
             Icons.power_settings_new,
