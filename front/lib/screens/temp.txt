@@ -1,0 +1,59 @@
+import 'package:flutter/material.dart';
+import '../widgets/main_drawer.dart';
+
+class LeavingTimeScreen extends StatefulWidget {
+  static const routeName = '/leaving-time';
+
+  @override
+  _LeavingTimeScreenState createState() => _LeavingTimeScreenState();
+}
+
+class _LeavingTimeScreenState extends State<LeavingTimeScreen> {
+  Widget weekButton(String day) {
+    return ClipOval(
+      child: Material(
+        color: Colors.transparent, // button color
+        child: InkWell(
+          splashColor: Colors.red, // inkwell color
+          child: SizedBox(
+            width: 56,
+            height: 56,
+            child: Text(day, style: TextStyle(fontSize: 56), textAlign: TextAlign.center,),
+          ),
+          onTap: () {},
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Horário de Saída das Aulas'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.notifications,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              // implementar
+            },
+          ),
+        ],
+      ),
+      drawer: MainDrawer(),
+      body: Row(
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              weekButton('S'),
+            ],
+          ),
+          Column(),
+        ],
+      ),
+    );
+  }
+}

@@ -23,8 +23,10 @@ class AuthScreen extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Color.fromRGBO(215, 117, 255, 1).withOpacity(0.5),
-                  Color.fromRGBO(255, 188, 117, 1).withOpacity(0.9),
+                  Colors.white,
+                  Colors.blueGrey,
+                  // Color.fromRGBO(215, 117, 255, 1).withOpacity(0.5),
+                  // Color.fromRGBO(255, 188, 117, 1).withOpacity(0.9),
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -37,12 +39,19 @@ class AuthScreen extends StatelessWidget {
               height: deviceSize.height,
               width: deviceSize.width,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(bottom: 25, top: 50),
+                    child: Image.asset(
+                      'assets/images/logo-ace-shield-color.png',
+                      scale: 1,
+                    ),
+                  ),
                   Flexible(
                     child: Container(
-                      margin: EdgeInsets.only(bottom: 20.0),
+                      margin: EdgeInsets.only(bottom: 40.0),
                       padding:
                           EdgeInsets.symmetric(vertical: 8.0, horizontal: 94.0),
                       transform: Matrix4.rotationZ(-0 * pi / 180)
@@ -50,19 +59,13 @@ class AuthScreen extends StatelessWidget {
                       // ..translate(-10.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Colors.deepOrange.shade900,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 8,
-                            color: Colors.black26,
-                            offset: Offset(0, 2),
-                          )
-                        ],
+                        // color: Colors.deepOrang  e.shade900,
+                        color: Colors.transparent,
                       ),
                       child: Text(
                         'Ace Shield',
                         style: TextStyle(
-                          color: Theme.of(context).accentTextTheme.title.color,
+                          color: Colors.black,
                           fontSize: 36,
                           fontFamily: 'Anton',
                           fontWeight: FontWeight.normal,
@@ -71,7 +74,7 @@ class AuthScreen extends StatelessWidget {
                     ),
                   ),
                   Flexible(
-                    flex: deviceSize.width > 600 ? 2 : 1,
+                    flex: 2,
                     child: AuthCard(),
                   ),
                 ],
@@ -232,7 +235,10 @@ class _AuthCardState extends State<AuthCard> {
                 if (_authMode == AuthMode.Signup)
                   TextFormField(
                     enabled: _authMode == AuthMode.Signup,
-                    decoration: InputDecoration(labelText: 'Confirmar senha'),
+                    decoration: InputDecoration(
+                      labelText: 'Confirmar senha',
+                      prefixIcon: Icon(Icons.lock),
+                    ),
                     obscureText: true,
                     validator: _authMode == AuthMode.Signup
                         ? (value) {
@@ -243,7 +249,7 @@ class _AuthCardState extends State<AuthCard> {
                         : null,
                   ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 if (_isLoading)
                   CircularProgressIndicator()
@@ -252,7 +258,9 @@ class _AuthCardState extends State<AuthCard> {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(_authMode == AuthMode.Login ? Icons.exit_to_app : Icons.create),
+                        Icon(_authMode == AuthMode.Login
+                            ? Icons.exit_to_app
+                            : Icons.create),
                         Text(_authMode == AuthMode.Login
                             ? 'Entrar'
                             : 'Cadastre-se'),

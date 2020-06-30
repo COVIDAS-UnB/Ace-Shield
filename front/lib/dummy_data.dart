@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import './models/Class.dart';
 
 const DUMMY_CLASSES = const [
-  Class(
+  Class2(
     subject: 'Álgebra Linear',
     classIdentifier: 'A',
     numOfCreds: 6,
@@ -12,7 +12,7 @@ const DUMMY_CLASSES = const [
       [2],
     ],
   ),
-  Class(
+  Class2(
     subject: 'Cálculo 1',
     classIdentifier: 'B',
     numOfCreds: 6,
@@ -22,7 +22,7 @@ const DUMMY_CLASSES = const [
       [2],
     ],
   ),
-  Class(
+  Class2(
     subject: 'Introdução a Economia',
     classIdentifier: 'B',
     numOfCreds: 4,
@@ -32,7 +32,7 @@ const DUMMY_CLASSES = const [
       [2],
     ],
   ),
-  Class(
+  Class2(
     subject: 'Estruturas de Dados',
     classIdentifier: 'A',
     numOfCreds: 6,
@@ -42,7 +42,7 @@ const DUMMY_CLASSES = const [
       [2],
     ],
   ),
-  Class(
+  Class2(
     subject: 'Circuitos Lógicos',
     classIdentifier: 'A',
     numOfCreds: 4,
