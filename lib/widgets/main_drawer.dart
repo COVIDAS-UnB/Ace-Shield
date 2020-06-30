@@ -66,7 +66,7 @@ class MainDrawer extends StatelessWidget {
           ),
           buildListTile(
               'Salas frequentadas por infectados', Icons.report_problem, () {}),
-          buildListTile('Verifique sua oferta', Icons.calendar_today, () {
+          buildListTile('Verifique sua grade', Icons.calendar_today, () {
             Navigator.of(context).pushReplacementNamed(BottomTabScreen.routeName);
           }),
           buildListTile('Horário de saída da semana', Icons.access_time, () {
