@@ -47,3 +47,4 @@ para rodar o projeto.
  3. [Link para o Relatório das pesquisas de aceitação](https://github.com/COVIDAS-UnB/Ace-Shield/blob/master/relatorios/RELAT%C3%93RIOS_OPINI%C3%83O_COMUNIDADE.pdf)
  4. [Link para o Relatório do Projeto](https://github.com/COVIDAS-UnB/Ace-Shield/blob/master/relatorios/DocumentoDeEntregaParaAvalia%C3%A7%C3%A3o.pdf)
  5. [Link para o cronograma de Execução](https://github.com/COVIDAS-UnB/Ace-Shield/blob/master/relatorios/Anexo_2_v2.pdf)
+ 6. [Link para os Relatórios Técnicos e de Algoritmo](https://github.com/COVIDAS-UnB/Ace-Shield/blob/master/relatorios/RELAT%C3%93RIOS_T%C3%89CNICOS.pdf)
