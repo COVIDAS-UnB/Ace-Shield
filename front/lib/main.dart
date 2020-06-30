@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:front/screens/leaving_time_screen.dart';
-import 'package:front/screens/time_optmizer.dart';
 import 'package:provider/provider.dart';
 
+import './screens/leaving_time_screen.dart';
+import './screens/time_optmizer_screen.dart';
 import './screens/splash_screen.dart';
 import './dummy_data.dart';
 import './providers/auth.dart';
