@@ -9,7 +9,7 @@ Integrantes:
  - Julia Porfirio
  - Larissa Boaz (líder)
  - Thales Godoy
- - Victor
+ - Victor Araújo
 
 Problema a ser resolvido:
 2 - Necessidade de distanciamento físico constante entre as pessoas - formação de comportamento e aspectos de planejamento físico/ambientais.
