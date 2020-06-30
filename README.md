@@ -18,6 +18,8 @@ Problema a ser resolvido:
 
 Ace Shield é o nome do aplicativo desenvolvido pela equipe. Sua principal funcionalidade é gerar uma grade horária que minimiza o tempo (horas e dias) que um aluno deve gastar na UnB fora dos horários de aula. Também foram prototipadas telas de alerta onde um aluno pode checar se em alguma das suas turmas há uma pessoa que contraiu coronavírus nos últimos dias.
 
+Caso seja de interesse, disponibilizamos o [output](https://github.com/COVIDAS-UnB/Ace-Shield/blob/master/relatorios/oferta.txt) do nosso gerador de ofertas que está sendo utilizado no aplicativo.
+
 ## Como instalar
 
  - Instale o [Android Studio](https://developer.android.com/studio/)
@@ -42,6 +44,6 @@ para rodar o projeto.
 
  1. [Link para o pitch](https://www.youtube.com/watch?v=wvuKBZ_Fj5M)
  2. [Link para o protótipo](https://www.figma.com/proto/HQgr6sv1utWoYJsu1hIH1O/Ace-Shield-App?node-id=7:70&scaling=scale-down)
- 3. [Link para o Relatório das pesquisas de aceitação](https://github.com/COVIDAS-UnB/Ace-Shield/blob/master/relatorios/DocumentoDeEntregaParaAvalia%C3%A7%C3%A3o.pdf)
+ 3. [Link para o Relatório das pesquisas de aceitação](https://github.com/COVIDAS-UnB/Ace-Shield/blob/master/relatorios/RELAT%C3%93RIOS_OPINI%C3%83O_COMUNIDADE.pdf)
  4. [Link para o Relatório do Projeto](https://github.com/COVIDAS-UnB/Ace-Shield/blob/master/relatorios/DocumentoDeEntregaParaAvalia%C3%A7%C3%A3o.pdf)
  5. [Link para o cronograma de Execução](https://github.com/COVIDAS-UnB/Ace-Shield/blob/master/relatorios/Anexo_2_v2.pdf)
