@@ -128,11 +128,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: double.infinity,
                         child: Row(
                           children: [
-                            Text(
-                              'Número de infectados: ' +
-                                  cls.infectedPeople.toString() + '             ',
-                              style: TextStyle(fontSize: 20),
-                            ),
+                            cls.infectedPeople > 0
+                                ? Text(
+                                    'Presença de COVID-19 ',
+                                    style: TextStyle(fontSize: 20),
+                                  )
+                                : Text(
+                                    'Ausência de COVID-19 ',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
                             cls.infectedPeople > 0
                                 ? Icon(
                                     Icons.warning,
